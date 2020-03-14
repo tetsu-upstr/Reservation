@@ -54,43 +54,33 @@ if ($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])) {
 </head>
 
 <body>
-  <div>
-    <div>
-      <h1>会員登録</h1>
-    </div>
-  <div id="content">
+<div class="l-wrap">
+  <h2 class="register-title">会員登録</h2>
     <p>次のフォームに必要事項をご記入ください。</p>
     <form action="" method="post">
-      <dl>
-        <dt>名前<span class="required">必須</span></dt>
-        <dd>
-              <input type="text" name="name" size="35" maxlength="255" value="<?php print h($_POST['name']); ?>" />
-              <?php if($error['name'] == 'blank'): ?>
-              <p class="error">名前を入力してください。</p>
-              <?php endif; ?>
-        </dd>
+        <p>名前<span class="required">必須</span></p>
+        <input type="text" name="name" size="35" maxlength="255" value="<?php print h($_POST['name']); ?>" />
+        <?php if($error['name'] == 'blank'): ?>
+          <p class="error">名前を入力してください。</p>
+        <?php endif; ?>
 
-        <dt>メールアドレス<span class="required">必須</span></dt>
-        <dd>
-              <input type="text" name="email" size="35" maxlength="255" value="<?php print h($_POST['email']); ?>" />
-              <?php if($error['email'] == 'blank'): ?>
-              <p class="error">メールアドレスを入力してください。</p>
-              <?php elseif($error['email'] == 'duplication'): ?>
-              <p class="error">メールアドレスは登録済みです。</p>
-              <?php endif; ?>
-        </dd>     
+        <p>メールアドレス<span class="required">必須</span></p>
+        <input type="text" name="email" size="35" maxlength="255" value="<?php print h($_POST['email']); ?>" />
+        <?php if($error['email'] == 'blank'): ?>
+          <p class="error">メールアドレスを入力してください。</p>
+        <?php elseif($error['email'] == 'duplication'): ?>
+          <p class="error">メールアドレスは登録済みです。</p>
+        <?php endif; ?>  
 
-        <dt>パスワード<span class="required">必須</span></dt>
-        <dd>
-              <input type="password" name="password" size="10" maxlength="20" value="<?php print h($_POST['password']); ?>" />
-              <?php if($error['password'] == 'blank'): ?>
-              <p class="error">パスワードを入力してください。</p>
-              <?php endif; ?>
-        </dd>
-      </dl>
+        <p>パスワード<span class="required">必須</span></p>
+        <input type="password" name="password" size="35" maxlength="255" value="<?php print h($_POST['password']); ?>" />
+        <?php if($error['password'] == 'blank'): ?>
+          <p class="error">パスワードを入力してください。</p>
+        <?php endif; ?>
 
-      <div><input type="submit" value="入力内容を確認する" /></div>
+      <div class="submit-btn"><input type="submit" value="入力内容を確認する" /></div>
     </form>
-  </div>
+    <p>&raquo;<a href="login.php">戻る</a></p>
+</div>
 </body>
 </html>
