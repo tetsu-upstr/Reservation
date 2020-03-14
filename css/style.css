@@ -16,6 +16,12 @@ td {
   height: 100px;
 }
 
+td :hover {
+  color: red;
+  cursor: pointer;
+  background-color: #fffafa;
+}
+
 .today {
   background: orange;
 }

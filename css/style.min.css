@@ -1,1 +1,1 @@
-.container{font-family:'Noto Sans', sans-serif;margin-top:80px}h3{height:30px}th{height:30px;text-align:center}td{height:100px}.today{background:orange}th:nth-of-type(1),td:nth-of-type(1){color:red}th:nth-of-type(7),td:nth-of-type(7){color:blue}
+.container{font-family:'Noto Sans', sans-serif;margin-top:80px}h3{height:30px}th{height:30px;text-align:center}td{height:100px}td :hover{color:red;cursor:pointer;background-color:#fffafa}.today{background:orange}th:nth-of-type(1),td:nth-of-type(1){color:red}th:nth-of-type(7),td:nth-of-type(7){color:blue}

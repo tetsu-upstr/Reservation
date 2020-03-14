@@ -11,6 +11,11 @@ th {
 }
 td {
   height: 100px;
+  :hover {
+    color: red;
+    cursor: pointer;
+    background-color: #fffafa;
+  }
 }
 .today {
   background: orange;
@@ -20,4 +25,11 @@ th:nth-of-type(1), td:nth-of-type(1) {
 }
 th:nth-of-type(7), td:nth-of-type(7) {
   color: blue;
+}
+.required {
+	background-color: #BB1850;
+	color: #fff;
+	font-size: 90%;
+	padding: 2px;
+	margin-left: 10px;
 }

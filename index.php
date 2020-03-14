@@ -1,4 +1,21 @@
 <?php
+session_start();
+require 'connect.php';
+
+// ログインしているか確認（セッション時間＝１時間）
+if (isset($_SESSION['user_id']) && $_SESSION['time'] + 3600 > time()) {
+  $_SESSION['time'] = time();
+  $users = $pdo->prepare('SELECT * FROM users WHERE user_id=?');
+  $users->execute(array($_SESSION['user_id']));
+  $user = $users->fetch();
+
+} else {
+  // ログインしていなけばログイン画面に飛ばす
+  header('Location: login.php');
+  exit();
+}
+
+// カレンダー表示
 date_default_timezone_set('Asia/Tokyo');
 
 // date関数：date ( string $format [, int $timestamp = time() ] ) : string
@@ -69,7 +86,11 @@ for ( $day = 1; $day <= $day_count; $day++, $youbi++) {
     $week = '';
   }
 }
+// カレンダー表示ここまで
 
+function h($s) {
+  return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+}
 ?>
 
 <!DOCTYPE html>
@@ -84,6 +105,14 @@ for ( $day = 1; $day <= $day_count; $day++, $youbi++) {
 </head>
 <body>
   <div class="container">
+    <!-- イベントの入力フォーム -->
+    <form action="input.php" method="POST">
+      <input type="text" name="event_name" placeholder="タイトルを入力" required>
+      <input type="text" name="details" placeholder="コメントを入力" required>
+      <input type="date" name="event_date" required>
+      <input type="hidden" name="user_id" value="<?php print($_SESSION['user_id']) ?>">
+      <input type="submit" value="予定を追加する">
+    </form>
   <h3><a href="?ym=<?php echo $prev; ?>">&lt;</a> <?php echo $calendar_title; ?> <a href="?ym=<?php echo $next; ?>">&gt;</a></h3>
   <table class="table table-borderd">
     <tr>
