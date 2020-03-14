@@ -1,7 +1,10 @@
 <?php
 session_start();
 require('connect.php');
-require('function.php');
+
+function h($s) {
+  return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+}
 
 if (!isset($_SESSION['join'])) {
   // ログインせずに確認画面に来たらログイン画面にリダイレクト
@@ -34,35 +37,25 @@ if(!empty($_POST)) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>会員登録</title>
 
-	<link rel="stylesheet" href="../style.css" />
+	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<div id="wrap">
-<div id="head">
-<h1>会員登録</h1>
-</div>
+<div class="l-wrap">
+  <div id="head">
+    <h2>会員登録</h2>
+  </div>
 
-<div id="content">
-<p>記入した内容を確認して、「登録する」ボタンをクリックしてください</p>
-<form action="" method="post">
-	<input type="hidden" name="action" value="submit" />
-	<dl>
-		<dt>ニックネーム</dt>
-		<dd>
+  <p>記入した内容を確認して、<br>「登録する」ボタンをクリックしてください</p>
+  <form action="" method="post">
+	  <input type="hidden" name="action" value="submit" />
+		<p>名前</p>
     <?php print(h($_SESSION['join']['name'])); ?>
-    </dd>
-		<dt>メールアドレス</dt>
-		<dd>
+		<p>メールアドレス</p>
     <?php print(h($_SESSION['join']['email'])); ?>
-    </dd>
-		<dt>パスワード</dt>
-		<dd>
-		【表示されません】
-		</dd>
-	</dl>
-	<div><a href="top.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="登録する" /></div>
-</form>
-</div>
+		<p>パスワード</p>
+    【表示されません】
+    <div class="submit-btn"><<a href="register.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="登録する" /></div>
+  </form>
 
 </div>
 </body>

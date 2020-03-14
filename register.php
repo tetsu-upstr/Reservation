@@ -1,7 +1,10 @@
 <?php
 session_start();
 require('connect.php');
-require('function.php');
+
+function h($s) {
+  return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+}
 
 // フォームを送信した時にだけエラーチェックを走らせる
 if(!empty($_POST)) {

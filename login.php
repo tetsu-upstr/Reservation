@@ -1,7 +1,10 @@
 <?php
 session_start();
 require('connect.php');
-require('function.php');
+
+function h($s) {
+  return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+}
 
 if ($_COOKIE['email'] !== '') {
   $email = $_COOKIE['email'];
@@ -77,9 +80,9 @@ if (!empty($_POST)) {
           <p>ログイン情報の記録</p>
             <input id="save" type="checkbox" name="save" value="on">
             <label for="save">自動ログイン</label>
-        <div class="login-btn">
-          <input type="submit" value="ログイン" />
-        </div>
+          <div class="login-btn">
+            <input type="submit" value="ログイン" />
+          </div>
       </form>
     </div>
     <div class="register">
