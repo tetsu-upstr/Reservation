@@ -76,9 +76,28 @@ for ( $day = 1; $day <= $day_count; $day++, $youbi++) {
   // フォーマット
   $date = $ym . '-' . $day;
 
-  if ($today == '$date') {
+  // テスト
+  // $sql = 'SELECT * FROM events';
+  // $stmt = $pdo->query($sql);
+  // $result = $stmt->fetchall(PDO::FETCH_ASSOC);
+  // echo '<pre>';
+  // var_dump($result[0][1]);
+  // echo '</pre>';
+
+  // SQLの日付とcalenderの日付が等しい場合にイベント名を取得する
+  // $sql = 'SELECT * FROM events';
+  // $stmt = $pdo->query($sql);
+  // foreach($stmt as $row) {
+  //   echo $row['event_name'] . $row['details'].'<br>';
+  //   echo $row['event_date'].'<br>';
+  // }
+  // var_dump($date);
+  // var_dump($today);
+  // var_dump($row['event_date']);
+
+  if ($today == $date) {
       // 今日の日付にclass="today"を付与
-      $week .= '<td class="today">' . $day;
+      $week .= '<td class="today">' .$day;
   } else {
       $week .= '<td>' . $day;
   }
@@ -99,5 +118,12 @@ for ( $day = 1; $day <= $day_count; $day++, $youbi++) {
     $week = '';
   }
 
+  
+
 }
 
+// $sql = 'SELECT event_name, event_date FROM events ';
+//   foreach ($pdo->query($sql) as $row) {
+//     print $row['event_name'] . "\t";
+//     print $row['event_date'] . "\t";
+//   }
